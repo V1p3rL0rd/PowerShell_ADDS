@@ -7,6 +7,7 @@ Simple PS scripts for Various AD DS Administration Cases:
 4) Automate the creation of new domain users (Create users, add them to specific OU, and make them a member of specific Security Group)
 5) Check AD users password expires
 6) Configure GPO security policies
+7) Check for active users with multiple connections on servers
 ... and more
 
 The script collection will be updated periodically
