@@ -15,7 +15,10 @@ Import-Module ActiveDirectory
 # Function to convert FileTime to DateTime
 function Convert-FileTimeToDateTime {
     param([long]$FileTime)
-    return [DateTime]::FromFileTime($FileTime)
+    if ($FileTime -gt 0) {
+        return [DateTime]::FromFileTime($FileTime)
+    }
+    return $null
 }
 
 # Get all AD users
@@ -38,7 +41,7 @@ foreach ($user in $users) {
         Enabled = $user.Enabled
         PasswordExpired = $user.PasswordExpired
         PasswordLastSet = if ($user.PasswordLastSet) {
-            Convert-FileTimeToDateTime $user.PasswordLastSet
+            $user.PasswordLastSet
         } else {
             "Never"
         }
